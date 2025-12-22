@@ -1,0 +1,66 @@
+[project]
+name = "funcai"
+version = "0.1.0"
+description = "intelligence is a function"
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.14"
+authors = [
+    { name = "prostomarkeloff"}
+]
+keywords = [
+    "ai",
+    "agents",
+    "llm",
+    "functional-programming",
+    "openai",
+    "langchain-alternative",
+    "async",
+    "category-theory",
+    "composable",
+    "typed",
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.14",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Typing :: Typed",
+    "Framework :: AsyncIO",
+]
+dependencies = [
+    "kungfu",
+    "openai>=2.14.0",
+    "pydantic>=2.12.5",
+]
+
+[project.urls]
+Homepage = "https://github.com/prostomarkeloff/funcai"
+Repository = "https://github.com/prostomarkeloff/funcai"
+Issues = "https://github.com/prostomarkeloff/funcai/issues"
+
+[tool.uv.sources]
+kungfu = { git = "https://github.com/timoniq/kungfu.git" }
+
+[dependency-groups]
+dev = [
+    "ruff>=0.14.10",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.ruff]
+target-version = "py314"
+line-length = 88
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM"]
+ignore = ["E501"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["funcai"]
