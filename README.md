@@ -1,4 +1,4 @@
-# funcai
+<h1 align="center">funcai</h1>
 
 <p align="center">
   <em><strong>「 intelligence is a function 」</strong></em>
