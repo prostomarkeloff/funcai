@@ -5,6 +5,7 @@ from kungfu import LazyCoroResult, Ok, Error, Result, Option, Nothing, Some
 from pydantic import BaseModel
 
 from funcai.core import Dialogue, Message, user, assistant, system, ABCAIProvider
+import builtins
 
 
 type Interp[T, E] = LazyCoroResult[T, E]

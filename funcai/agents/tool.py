@@ -1,10 +1,12 @@
 """Tool definition and @tool decorator."""
 
-from dataclasses import dataclass
-from typing import Callable, Any, get_type_hints, overload
 import inspect
+from collections.abc import Callable
+from dataclasses import dataclass
+from typing import Any, get_type_hints, overload
 
-from pydantic import create_model, BaseModel
+from pydantic import BaseModel, create_model
+from kungfu import Option, Nothing, Some, from_optional
 
 
 @dataclass(frozen=True)
@@ -15,6 +17,7 @@ class Tool:
     description: str
     parameters: type[BaseModel]
     fn: Callable[..., Any]
+    return_type: Option[type[Any]]
 
     async def execute(self, **kwargs: Any) -> Any:
         """Execute the tool with given arguments."""
@@ -26,7 +29,7 @@ class Tool:
 def _make_tool(fn: Callable[..., Any], description: str) -> Tool:
     """Internal: create Tool from function and description."""
     hints = get_type_hints(fn)
-    hints.pop("return", None)
+    return_type = from_optional(hints.pop("return", None))
 
     sig = inspect.signature(fn)
     fields: dict[str, Any] = {}
@@ -45,6 +48,7 @@ def _make_tool(fn: Callable[..., Any], description: str) -> Tool:
         description=description,
         parameters=Parameters,
         fn=fn,
+        return_type=return_type,
     )
 
 
