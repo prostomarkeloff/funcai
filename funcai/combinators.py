@@ -1,11 +1,10 @@
 import asyncio
-from typing import Callable, Awaitable
+from typing import Awaitable, Callable
 
-from kungfu import LazyCoroResult, Ok, Error, Result, Option, Nothing, Some
+from kungfu import Error, LazyCoroResult, Nothing, Ok, Option, Result, Some
 from pydantic import BaseModel
 
-from funcai.core import Dialogue, Message, user, assistant, system, ABCAIProvider
-
+from funcai.core import ABCAIProvider, Dialogue, Message, assistant, system, user
 
 type Interp[T, E] = LazyCoroResult[T, E]
 type Condition[T] = Callable[[T], bool]

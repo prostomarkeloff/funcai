@@ -30,6 +30,34 @@ def _make_assistant_message[S](response: AIResponse[S]) -> Message:
     )
 
 
+def _serialize_value(value: typing.Any) -> typing.Any:
+    """Recursively prepare value for JSON serialization."""
+
+    match value:
+        case BaseModel():
+            return value.model_dump()
+        case list():
+            return [_serialize_value(item) for item in value]
+        case dict():
+            return {k: _serialize_value(v) for k, v in value.items()}
+        case _:
+            return value
+
+
+def _serialize_tool_result(result: typing.Any) -> str:
+    """Serialize tool result to string for LLM."""
+
+    match result:
+        case None:
+            return "null"
+        case str():
+            return result
+        case BaseModel():
+            return result.model_dump_json()
+        case _:
+            return json.dumps(_serialize_value(result))
+
+
 def _execute_tool_call(tools_map: dict[str, Tool]):
     """Curried tool executor."""
 
@@ -41,7 +69,7 @@ def _execute_tool_call(tools_map: dict[str, Tool]):
             )
         try:
             result = await tool_obj.execute(**call.arguments)
-            content = result if isinstance(result, str) else json.dumps(result)
+            content = _serialize_tool_result(result)
         except Exception as e:
             content = f"Error: {e}"
         return tool_result(tool_call_id=call.id, content=content)
