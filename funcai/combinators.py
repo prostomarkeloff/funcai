@@ -1,5 +1,5 @@
 import asyncio
-from collections.abc import Awaitable, Callable
+from typing import Awaitable, Callable
 
 from kungfu import Error, LazyCoroResult, Nothing, Ok, Option, Result, Some
 from pydantic import BaseModel

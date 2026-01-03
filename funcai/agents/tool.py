@@ -1,9 +1,8 @@
 """Tool definition and @tool decorator."""
 
 import inspect
-from collections.abc import Callable
 from dataclasses import dataclass
-from typing import Any, get_type_hints, overload
+from typing import Any, get_type_hints, overload, Callable
 
 from pydantic import BaseModel, create_model
 from kungfu import Option, Nothing, Some, from_optional
