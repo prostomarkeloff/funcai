@@ -54,6 +54,10 @@ def _media_to_content_part(media: Media) -> dict[str, Any]:
 def _tool_to_openai(tool: Tool) -> dict[str, Any]:
     schema = tool.parameters.model_json_schema()
     schema["additionalProperties"] = False
+
+    if "properties" in schema:
+        schema["required"] = list(schema.get("properties", {}).keys())
+
     return {
         "type": "function",
         "function": {
