@@ -2,7 +2,7 @@ import asyncio
 
 from kungfu import Error, Ok
 from funcai import Dialogue, agent, message, tool
-from funcai.std.openai_provider import OpenAIProvider
+from funcai.std.providers.openai import OpenAIProvider
 
 provider = OpenAIProvider(model="gpt-4o")
 

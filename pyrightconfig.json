@@ -1,0 +1,18 @@
+{
+  "typeCheckingMode": "strict",
+  "include": [
+    "funcai",
+    "examples"
+  ],
+  "exclude": [
+    "**/__pycache__",
+    "**/node_modules"
+  ],
+  "reportMissingTypeStubs": false,
+  "reportMissingImports": "warning",
+  "reportUnknownVariableType": "none",
+  "reportUnknownArgumentType": "none",
+  "reportUnknownMemberType": "none",
+  "pythonVersion": "3.14"
+}
+

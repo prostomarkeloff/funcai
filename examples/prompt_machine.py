@@ -1,8 +1,9 @@
 import asyncio
 
 from kungfu import Error, Nothing, Ok, Option
-from funcai import Dialogue, message, combinators
-from funcai.std.openai_provider import OpenAIProvider
+from funcai import Dialogue, message
+from funcai.combinators import append
+from funcai.std.providers.openai import OpenAIProvider
 
 DEFAULT_PROVIDER = OpenAIProvider(model="gpt-5")
 
@@ -14,7 +15,7 @@ def new_dialogue() -> Dialogue:
 
 
 def new_prompt(d: Dialogue, prompt: str) -> Dialogue:
-    return combinators.append(d, message.user(text=prompt))
+    return append(d, message.user(text=prompt))
 
 
 async def ask(d: Dialogue, prompt: str) -> str:

@@ -1,6 +1,6 @@
 [project]
 name = "funcai"
-version = "0.1.0"
+version = "0.2.0"
 description = "intelligence is a function"
 readme = "README.md"
 license = "MIT"
@@ -35,6 +35,7 @@ dependencies = [
     "kungfu",
     "openai>=2.14.0",
     "pydantic>=2.12.5",
+    "combinators-py",
 ]
 
 [project.urls]
@@ -44,6 +45,7 @@ Issues = "https://github.com/prostomarkeloff/funcai/issues"
 
 [tool.uv.sources]
 kungfu = { git = "https://github.com/timoniq/kungfu.git" }
+combinators-py = { git = "https://github.com/prostomarkeloff/combinators.py.git" }
 
 [dependency-groups]
 dev = [
@@ -64,3 +66,9 @@ ignore = ["E501"]
 
 [tool.ruff.lint.isort]
 known-first-party = ["funcai"]
+
+[tool.pyright]
+pythonVersion = "3.14"
+typeCheckingMode = "strict"
+venvPath = "."
+venv = ".venv"

@@ -5,7 +5,7 @@ from dataclasses import dataclass
 from typing import Any, get_type_hints, overload, Callable
 
 from pydantic import BaseModel, create_model
-from kungfu import Option, Nothing, Some, from_optional
+from kungfu import Option, from_optional
 
 
 @dataclass(frozen=True)

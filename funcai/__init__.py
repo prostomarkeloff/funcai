@@ -1,15 +1,17 @@
 from funcai.core import media, message, Dialogue
-from funcai import combinators
-
 from funcai.agents import tool, agent
-from funcai.std.openai_provider import OpenAIProvider
+from funcai.std import (
+    OpenAIProvider,
+)
 
 __all__ = (
+    # Core
     "media",
     "message",
+    "Dialogue",
+    # Agents
     "agent",
     "tool",
-    "combinators",
-    "Dialogue",
+    # Providers
     "OpenAIProvider",
 )

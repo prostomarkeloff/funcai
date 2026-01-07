@@ -1,7 +1,8 @@
 import asyncio
 
-from funcai import Dialogue, message, combinators, agent, tool
-from funcai.std.openai_provider import OpenAIProvider
+from funcai import Dialogue, message, agent, tool
+from funcai.combinators import append
+from funcai.std.providers.openai import OpenAIProvider
 from kungfu import Ok, Error
 
 provider = OpenAIProvider(model="gpt-4o")
@@ -31,7 +32,7 @@ def new_dialogue() -> Dialogue:
 
 
 async def ask(dialogue: Dialogue, prompt: str) -> str:
-    extended = combinators.append(dialogue, message.user(text=prompt))
+    extended = append(dialogue, message.user(text=prompt))
     result = await agent(extended, provider, tools=[put, retrieve])
     match result:
         case Ok(r):
