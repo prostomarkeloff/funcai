@@ -22,7 +22,7 @@ def calculate(expression: str) -> float:
 
 dialogue = Dialogue([
     message.system(text="You're a calculator."),
-    message.user(text="What is 2^10 + 156?")
+    message.user(text="What is 2**10 + 156?")
 ])
 
 match await agent(dialogue, provider, tools=[calculate]):

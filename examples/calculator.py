@@ -16,7 +16,7 @@ async def main():
     dialogue = Dialogue(
         [
             message.system(text="You're a helpful calculator."),
-            message.user(text="What is 2^10 + 156?"),
+            message.user(text="What is 2**10 + 156?"),
         ]
     )
 
