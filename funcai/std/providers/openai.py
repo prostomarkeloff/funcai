@@ -185,10 +185,11 @@ class OpenAIProvider(ABCAIProvider[OpenAIError]):
         model: str,
         api_key: Option[str] = Nothing(),
         temperature: Option[float] = Nothing(),
+        base_url: Option[str] = Nothing(),
         modalities: list[Modality] | None = None,
         audio: AudioConfig | None = None,
     ) -> None:
-        self.client = AsyncOpenAI(api_key=api_key.unwrap_or_none())
+        self.client = AsyncOpenAI(api_key=api_key.unwrap_or_none(), base_url=base_url.unwrap_or_none())
         self.model = model
         self.temperature = temperature
         self.modalities = modalities
