@@ -4,7 +4,7 @@ version = "0.2.0"
 description = "intelligence is a function"
 readme = "README.md"
 license = "MIT"
-requires-python = ">=3.14"
+requires-python = ">=3.13"
 authors = [
     { name = "prostomarkeloff"}
 ]
