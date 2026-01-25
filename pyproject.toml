@@ -32,7 +32,7 @@ classifiers = [
     "Framework :: AsyncIO",
 ]
 dependencies = [
-    "kungfu",
+    "kungfu-fp",
     "openai>=2.14.0",
     "pydantic>=2.12.5",
     "combinators-py",
@@ -44,7 +44,7 @@ Repository = "https://github.com/prostomarkeloff/funcai"
 Issues = "https://github.com/prostomarkeloff/funcai/issues"
 
 [tool.uv.sources]
-kungfu = { git = "https://github.com/timoniq/kungfu.git" }
+kungfu-fp = { git = "https://github.com/timoniq/kungfu.git" }
 combinators-py = { git = "https://github.com/prostomarkeloff/combinators.py.git" }
 
 [dependency-groups]
